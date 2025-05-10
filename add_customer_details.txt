@@ -1,0 +1,24 @@
+Your user number is: u01
+Your firstname is: abitha
+Your lastname is: amirthalingam
+Your address is: jaffna
+Your ID_NUM is: 200156200426
+
+Your user number is: u01
+Your firstname is: saravanya
+Your lastname is: aravinthan
+Your address is: mullai
+Your ID_NUM is: 2002548967123
+
+Your user number is: u01
+Your firstname is: sankavi
+Your lastname is: vijayakumar
+Your address is: jaffna
+Your ID_NUM is: 20056347678
+
+Your user number is: u01
+Your firstname is: shapthavi
+Your lastname is: theiventhiran
+Your address is: mullai
+Your ID_NUM is: 20025689745
+

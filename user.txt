@@ -1,0 +1,20 @@
+Your acc_num is: 1001
+Your user_num is: u01
+Your user_name is: abi
+Your password is: abitha@2001
+
+Your acc_num is: 1002
+Your user_num is: u01
+Your user_name is: saran
+Your password is: saran@2002
+
+Your acc_num is: 1003
+Your user_num is: u01
+Your user_name is: sanku
+Your password is: sanku@2002
+
+Your acc_num is: 1004
+Your user_num is: u01
+Your user_name is: shapthu
+Your password is: shapthu@2002
+
