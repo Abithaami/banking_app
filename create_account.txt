@@ -1,16 +1,1 @@
-Your acc_num is: 1001
-Your name is: abi
-Your balance is: 50000
-
-Your acc_num is: 1002
-Your name is: saravanya
-Your balance is: 700000
-
-Your acc_num is: 1003
-Your name is: sankavi
-Your balance is: 40000
-
-Your acc_num is: 1004
-Your name is: shapthavi
-Your balance is: 40000
-
+1001,u01,ami,9500,

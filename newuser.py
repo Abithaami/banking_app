@@ -1,3 +1,21 @@
+def data_changer():
+    acc_num = int(input("Enter your account number: "))
+    file = open("create_account.txt","r")
+    data = file.readlines()
+    file.close()
+    for i in data:
+        m = i.split(",")
+        if int(m[0]) == acc_num:
+            data.remove(i)
+            file = open("create_account.txt","w")
+            for i in data:
+                file.write(i)
+            file.close()
+            return m
+
+       
+        
+        
 admin_name = "abi"
 a_password = "abi@123"
 
@@ -94,8 +112,8 @@ while True:
                             acc_num = 1001  
 
                     
-                        with open('create_account.txt', 'a') as f:
-                            f.write(f"Your acc_num is: {acc_num}\n")
+                        #with open('create_account.txt', 'a') as f:
+                           # f.write(f"Your acc_num is: {acc_num}\n")
                         return acc_num
 
                     def get_next_user_number():
@@ -112,11 +130,12 @@ while True:
                                 
                         except FileNotFoundError:
                             u_num = "u01"
-                        return u_num
+                        
    
                         with open('add_customer_details.txt', 'a') as f:
-                            f.write(f"Your user_num is: {u_num}\n")
+                            f.write(f"Your user_num is: {u_num}")
                         return  u_num
+                    
 
                     u_num = get_next_user_number()
                     acc_num = get_next_account_number()
@@ -125,58 +144,86 @@ while True:
                     user_name = input("Enter user name: ")
                     password = input("Enter your password: ")
 
+                    create_account_data = {
+                        "acc_num": acc_num,
+                        "user_num": u_num,
+                        "user_name": user_name,
+                        "balance": balance
+                    }
+
+
 
                     with open('create_account.txt', 'a') as file:
-                        file.write(f"Your name is: {name}\n")
-                        file.write(f"Your balance is: {balance}\n")
+                        for key, value in create_account_data.items():
+                            file.write(f"{value},")
                         file.write("\n")
 
-                    file = open('user.txt','a')
-                    file.write(f"Your acc_num is: {acc_num}\n")
-                    file.write(f"Your user_num is: {u_num}\n")
-                    file.write(f"Your user_name is: {user_name}""\n")
-                    file.write(f"Your password is: {password}""\n")
+
+           
+                    user_data = {
+                        "user_num": u_num,
+                        "user_name": user_name,
+                        "password": password
+                    }
+
+                    with open('user.txt', 'a') as file:
+                        for key, value in user_data.items():
+                            file.write(f"{value},")
+                        file.write("\n")
+
+
+
+          
+#Deposit Money....................
+          
+                
+
+                elif choose == "3":
+                    m = data_changer()  
+                    print(m)    
+                    amount = int(input("Enter deposit amount: "))
+                    balance = int(m[3]) + amount
+                    m[3] = balance 
+                    
+                    file = open("create_account.txt","a")
+                    m.pop()
+                    for i in m:
+                        file.write(f"{i},")
                     file.write("\n")
                     file.close()
-
-#Deposit Money....................
-                elif choose == "3":
-                    acc_num = int(input("Enter your account number: "))
-                    if acc_num in accounts:
-                        amount = int(input("Enter deposit amount: "))
-                        accounts[acc_num][1] += amount
-                        accounts[acc_num][2].append(f"Deposited: {amount}")
-                        print(f"Deposit successful. New balance: {accounts[acc_num][1]}")
-                    else:
-                        print("Account not found.")
-
-                        
-
-
+                    
 
 #Withdrawel Money....................
                 elif choose == "4":
-                    acc_num = int(input("Enter your account number: "))
-                    if acc_num in accounts:
-                        amount = int(input("Enter withdrawal amount: "))
-                        if accounts[acc_num][1] >= amount:
-                            accounts[acc_num][1] -= amount
-                            accounts[acc_num][2].append(f"Withdrew: {amount}")
-                            print(f"Withdrawal successful. New balance: {accounts[acc_num][1]}")
-                        else:
-                            print("Insufficient funds.")
-                    else:
-                        print("Account not found.")
-
-
+                    m = data_changer()
+                    print(m)
+                    amount = int(input("Enter withdrawel amount: "))
+                    if int(m
+                           [3]) > amount:
+                        balance = int(m[3]) - amount
+                        m[3] = balance
+                        
+                        file = open("create_account.txt","a")
+                        m.pop()
+                        for i in m:
+                            file.write(f"{i},")
+                        file.write("\n")
+                        file.close()
+                        
+                        
                     
 #Check Balance.................................
                 elif choose == "5":
-                    acc_num = int(input("Enter your account number: "))
-                    if acc_num in accounts:
-                        print(f"Your current balance is: {accounts[acc_num][1]}")
-                    else:
-                        print("Account not found.")
+                    m = data_changer()
+                    print(m[3])
+                    
+                    file = open("create_account.txt","a")
+                    m.pop()
+                    for i in m:
+                        file.write(f"{i},")
+                    file.write("\n")
+                    file.close()
+                    
 
 # Transaction History................................
                 elif choose == "6":
