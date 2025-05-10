@@ -1,3 +1,8 @@
+import datetime 
+def data_time():
+    return datetime.date.today()
+date = data_time()
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 def data_changer():
     acc_num = int(input("Enter your account number: "))
     file = open("create_account.txt","r")
@@ -12,8 +17,8 @@ def data_changer():
                 file.write(i)
             file.close()
             return m
-
-       
+#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    
         
         
 admin_name = "abi"
@@ -176,7 +181,6 @@ while True:
           
 #Deposit Money....................
           
-                
 
                 elif choose == "3":
                     m = data_changer()  
@@ -192,14 +196,17 @@ while True:
                     file.write("\n")
                     file.close()
                     
+                    file = open("transaction_history.txt","a")
+                    file.write(f"{m[0]},Deposit money = {amount}---New balance = {m[3]}----{date} \n")
+                    file.close()
+                    
 
 #Withdrawel Money....................
                 elif choose == "4":
                     m = data_changer()
                     print(m)
                     amount = int(input("Enter withdrawel amount: "))
-                    if int(m
-                           [3]) > amount:
+                    if int(m[3]) > amount:
                         balance = int(m[3]) - amount
                         m[3] = balance
                         
@@ -210,7 +217,9 @@ while True:
                         file.write("\n")
                         file.close()
                         
-                        
+                        file = open("transaction_history.txt","a")
+                        file.write(f"{m[0]},Withdrawel money = {amount}---New balance = {m[3]}----{date} ,\n")
+                        file.close()
                     
 #Check Balance.................................
                 elif choose == "5":
@@ -227,7 +236,21 @@ while True:
 
 # Transaction History................................
                 elif choose == "6":
-                    print(".........")
+                    history=[]
+                    acc_num = input("Enter your account number: ")
+                    file = open("transaction_history.txt","r")
+                    data = file.readlines()
+                    for i in data:
+                        m = i.split(",")
+                        if m[0] == acc_num:
+                            history.append(i)
+                        else:
+                            pass
+                    for i in history:
+                        print(i)
+                        
+                        
+                   
 
 # Exit................................
                 elif choose == "7":
